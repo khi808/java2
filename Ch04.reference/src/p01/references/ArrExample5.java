@@ -40,17 +40,15 @@ public class ArrExample5 {
 			System.out.print("=");
 		}
 		System.out.println();
-		System.out.print("합계");
+		System.out.print("합계"+"\t");
 		
-		for(int i=0; i<score.length; i++) {
-			for(int j=0; j<score[i].length; j++) {
-				sum2[0] += score[i][0];
-				sum2[1] += score[i][1];
-				sum2[2] += score[i][2];
-	
+		for(int i=0; i<score[i].length; i++) {
+			for(int j=0; j<score.length; j++) {
+				sum2[i] += score[j][i];
 			}
-			System.out.print(sum2[i]);
+			System.out.print(sum2[i]+"\t");
 		}
+		
 		
 		
 		
