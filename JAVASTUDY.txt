@@ -3,6 +3,9 @@ JVM 메모리 분류
 2. 변수영역 stack // 동적 = 코드가 실행되고 사라짐 지역변수 , 매개 변수 
 3. 객체영역 heap // 동적 가지비 콜렉터가 메모리 회수 ex) 생성자를 이용해서 객체생성시 이쪽에 생성됨 new = heap을 사용하겠다.
 
+// 강제로 예외발생법
+throw new Exception();
+
 eclipse 초기설정 
 1. window 메뉴 - preferences - workspace - text encoding utf-8 바꿀것 , window title 전부체크
 
