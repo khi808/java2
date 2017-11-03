@@ -6,6 +6,11 @@ JVM 메모리 분류
 // 강제로 예외발생법
 throw new Exception();
 
+// 객체 변환가능 확인
+변환객체 instanceof 변환할객체 = 변환객체에서 변환할객체로 타입을 바꿀수 있으면 true를 반환함
+ex ) car instanceof bus 의 리턴되는 값은 true
+변환객체는 부모객체이고 변환할객체는 자식객체
+
 eclipse 초기설정 
 1. window 메뉴 - preferences - workspace - text encoding utf-8 바꿀것 , window title 전부체크
 
