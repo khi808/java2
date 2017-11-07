@@ -1,5 +1,8 @@
 package test;
-
+/**
+ * 배열에 객체를 넣어서 사용할때 null값은 연산불가
+ * 
+ * */
 import java.util.Scanner;
 
 public class MemberService {
@@ -9,7 +12,8 @@ public class MemberService {
 		// 객체 생성
 		String id = " ";
 		String pw = " ";
-  start:while(true) {
+		boolean isContinue = true;
+  start:while(isContinue) {
 		System.out.println("아이디를 입력하세요");
 		id = sc.next();
 		System.out.println("비밀번호를 입력하세요");
@@ -27,7 +31,7 @@ public class MemberService {
 			String name = sc.next();
 			member = new Member(id, pw, name);
 			for(int i=0;i<memberArr.length; i++) {
-				if(memberArr[i] == null) {
+				if(memberArr[i] == null) { // 객체타입의 배열의 요소들은 초기값 모두 null
 					memberArr[i] = member;
 					System.out.println("회원가입성공");
 					break;
@@ -35,6 +39,11 @@ public class MemberService {
 			}
 		} else {
 			System.out.println(member.getName()+"님 로그인 환영합니다.");
+			System.out.println("종료 : y/n");
+			char c = sc.next().charAt(0);
+			if(c == 'y' || c == 'Y') {
+				isContinue = false;
+			}
 		}
 		
 		}

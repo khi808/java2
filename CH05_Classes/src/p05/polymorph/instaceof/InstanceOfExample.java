@@ -15,8 +15,8 @@ public class InstanceOfExample {
 	}
 	
 	public static void method1(Parent p) { // 객체를 매개변수로 갖고 있는 메소드
-		if(parent instanceof Child) { // 값으로 받은 p가 Child 타입으로 Casting이 가능한지 boolean값으로 반환
-			Child child = (Child)parent;
+		if(p instanceof Child) { // 값으로 받은 p가 Child 타입으로 Casting이 가능한지 boolean값으로 반환
+			Child child = (Child)p;
 			System.out.println("method1 - Child변환 성공");
 		} else {
 			System.out.println("method1 - Child로 변환 불가");
