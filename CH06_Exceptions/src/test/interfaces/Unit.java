@@ -3,15 +3,17 @@ package test.interfaces;
 public class Unit {
 	int hitPoint;
 	final int MAX_HP;
-	
+	String name;
 	Unit(int hp){
 		MAX_HP=hp;
 	}
-	void battle(int hitPoint, int index) {
+	int attack(Unit u, int index) {
 		for(int i=0; i<index; i++) {
-			--hitPoint;
+			u.hitPoint--;
 		}
-		System.out.println("전투로 인한 피해: "+index+" 남은 HP: "+hitPoint);
+		
+		System.out.println(this.toString()+"가 "+u.toString()+"을 "+index+"번 공격했다."+u.toString()+"의 남은 HP: "+u.hitPoint);
+		return u.hitPoint;
 	}
 }
 interface Repairale{
