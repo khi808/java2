@@ -1,0 +1,16 @@
+ 클래스명 Stock 재고
+
+속성(field)  상품명 goodsName;
+              수량   qty;
+
+생성자(constructor)
+   Stock(상품명,수량){} 
+
+
+  입고
+   inStock(){}
+
+  출고
+   outStock(){} 
+ 
+
