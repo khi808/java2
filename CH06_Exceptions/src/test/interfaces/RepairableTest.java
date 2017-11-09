@@ -61,7 +61,7 @@ class Medic extends GroundUnit implements Recovery{
 			while(u.hitPoint !=u.MAX_HP){
 				System.out.println(u.toString()+"의 HP "+u.hitPoint++);
 			}
-			System.out.println(u.toString()+"의 치료가 막 끝났습니다. 현재 HP:"+u.hitPoint +"|MAX_HP:"+ MAX_HP);
+			System.out.println(u.toString()+"의 치료가 막   끝났습니다. 현재 HP:"+u.hitPoint +"|MAX_HP:"+ MAX_HP);
 		}
 		}
 	}
