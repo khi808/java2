@@ -23,13 +23,12 @@ public class MemberExample {
 					System.out.println("이름 입력: ");
 					name = sc.next();
 					if(member[i] == null) {
-						if(member[i].getId().equals(id)){
-							System.out.println("이미 존재하는 ID입니다.");
-						}
 							member[i] = new Member(id, pw, name);
 							System.out.println("회원가입 완료");
 							break;
-					} 
+					}else if(member[i].getId().equals(id)){
+						System.out.println("이미 존재하는 ID입니다.");
+					}
 				}
 			} else if(select == 2) {
 				System.out.println("ID입력 :");
@@ -42,7 +41,10 @@ public class MemberExample {
 							System.out.println(member[i].getName()+"님 로그인 되었습니다.");
 						} else if(member[i].getId().equals(id) && !(member[i].getPassword().equals(pw))){
 							System.out.println("비밀번호가 틀렸습니다.");
-							if(cnt == 5) isContinue = false;
+							if(cnt == 5) {
+								System.out.println("비밀번호 5회 입력실패로 종료됩니다.");
+								isContinue = false;
+							}
 							cnt++;
 						} else {
 							System.out.println("ID가 없습니다.");

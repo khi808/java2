@@ -10,7 +10,7 @@ public class MultiThreadExample1 {
 		g1.start();
 		//  객체 생성
 		G2 g2 = new G2();
-		// g2.start(); 인터페이스를 상속받은 객체이긴 하나 오버라이드 하지않아서 사용불가
+		// g2.start(); 인터페이스를 상속받은 객체이긴 하나 start() 메소드가 없어서 사용불가
 		
 		// Thread객체 생성
 		// Runnable로 구현된 Thread객체(G2타입의 g2)는
