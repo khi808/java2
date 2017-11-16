@@ -1,14 +1,14 @@
 package test;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class GoodsEvent {
 	//필드
 	Goods goods;
-	LocalDate startDate;
-	LocalDate endDate;
+	LocalDateTime startDate;
+	LocalDateTime endDate;
 	//생성자
-	public GoodsEvent(Goods goods, LocalDate startDate, LocalDate endDate) {
+	public GoodsEvent(Goods goods, LocalDateTime startDate, LocalDateTime endDate) {
 		this.goods = goods;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -21,16 +21,16 @@ public class GoodsEvent {
 	public void setGoods(Goods goods) {
 		this.goods = goods;
 	}
-	public LocalDate getStartDate() {
+	public LocalDateTime getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(LocalDate startDate) {
+	public void setStartDate(LocalDateTime startDate) {
 		this.startDate = startDate;
 	}
-	public LocalDate getEndDate() {
+	public LocalDateTime getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(LocalDate endDate) {
+	public void setEndDate(LocalDateTime endDate) {
 		this.endDate = endDate;
 	}
 	
