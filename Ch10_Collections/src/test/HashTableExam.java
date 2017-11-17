@@ -40,6 +40,7 @@ public class HashTableExam {
 			case 2 :
 				int cnt = 0;
 				while(true) {
+					System.out.println("[로그인]");
 					System.out.println("아이디와 패스워드를 입력하세요");
 					System.out.print("아이디: ");
 					String id = sc.next();
@@ -64,9 +65,14 @@ public class HashTableExam {
 					}
 				}
 			case 3 :
+				System.out.println("종료");
 				return;
 			}
 		}
 		
-	}
+		
+		
+	}//main끝
+	
+	
 }

@@ -1,6 +1,8 @@
 package p01.arrayList;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class ArrayListExample5 {
@@ -11,6 +13,8 @@ public class ArrayListExample5 {
 	 //index번호 0번지의 값을 삭제하는 코드
 		List<String> list;
 		list = new ArrayList<>();
+		//동기화
+		list = Collections.synchronizedList(list);
 
 		for(int i=0;i<list.size();i++)
 			System.out.println(list.get(i));
