@@ -7,20 +7,15 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Scanner;
 /**
- * 클라이언트에서 숫자1, 숫자2, op(+,-,*,/) 세개의 값을 받아서
- * 서버로 보냄 - 서버에서 연산결과를 클라이언트로 보내기
+ * RPC(Remote Procedure Call)
+ * 클라이언트에서 숫자1, 숫자2, op(+,-,x,/) 세개의 값을 받아서 
+ * 서버로 보냄 - 서버에서 연산결과 를 클라이언트로 보냄
+ * 
  * */
 public class ClientExample {
 	public static void main(String[] args) {
 		Socket socket = null;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("계산할 값 입력:");
-		System.out.print("첫번째 값: ");
-		int num1 = sc.nextInt();
-		System.out.print("연산자: ");
-		char op = sc.next().charAt(0);
-		System.out.print("두번째 값: ");
-		int num2 = sc.nextInt();
+		Scanner scanner = new Scanner(System.in);
 		try {
 			socket = new Socket();//클라이언트는 하나의 소켓만 생성
 			System.out.println("[연결요청]");
@@ -31,11 +26,10 @@ public class ClientExample {
 			byte[] bytes = null;
 			String message = null;
 			OutputStream os = socket.getOutputStream();//출력객체 생성
-			bytes[0] = (byte)num1;
-			bytes[1] = (byte)op;
-			bytes[2] = (byte)num2;
+			System.out.print("입력>");
+			message = scanner.nextLine();
 			//message = "Hello Server";
-			//bytes = message.getBytes();//String.getBytes()->문자열을 byte배열로 변환
+			bytes = message.getBytes();//String.getBytes()->문자열을 byte배열로 변환
 			os.write(bytes);//전송
 			os.flush();//메세지 밀어내기
 			System.out.println("[데이터 보내기 성공]");

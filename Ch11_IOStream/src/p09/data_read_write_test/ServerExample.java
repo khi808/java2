@@ -30,32 +30,32 @@ public class ServerExample {
 				InputStream is = socket.getInputStream();//socket으로 들어오는 스트림 얻기
 				bytes = new byte[100];//byte단위의 값을 읽어들여 저장하는 배열
 				int readByteCnt = is.read(bytes);//읽어들이만큼 배열에 저장후 저장된 갯수 readByteCnt에 대입
-				int num1 = bytes[0];
-				char op = (char)bytes[1];
-				int num2 = bytes[2];
-				
-				switch (op) {
-				case '+' :
-					System.out.println("[데이타 받기 성공] 연산 결과: "+num1 + " + " + num2 + " = " + (num1+num2));
+				message = new String(bytes,0,readByteCnt);//
+				System.out.println("[데이타 받기 성공]"+message);
+				//----------- 전송받은 메세지 출력 완료 -----------//
+				String[] calMessage = message.split(",");
+				double result = 0;
+				int num1 = Integer.parseInt(calMessage[0]);
+				int num2 = Integer.parseInt(calMessage[1]);
+				switch(calMessage[2]) {
+				case "+" :
+					 result = num1 + num2;
 					break;
-				case '-' :
-					System.out.println("[데이타 받기 성공] 연산 결과: "+num1 + " - " + num2 + " = " + (num1-num2));
+				case "-" :
+					result = num1 - num2;
 					break;
-				case '*' :
-					System.out.println("[데이타 받기 성공] 연산 결과: "+num1 + " x " + num2 + " = " + (num1*num2));
+				case "*" :
+					result = (double)num1 * (double)num2;
 					break;
-				case '/' :
-					System.out.println("[데이타 받기 성공] 연산 결과: "+ num1 + " / " + num2 + " = " + (num1/num2));
+				case "/" :
+					result = (double)num1 / (double)num2;
 					break;
-				case '%' :
-					System.out.println("[데이타 받기 성공] 연산 결과: "+num1 + " % " + num2 + " = " + (num1%num2));
+				case "%" :
+					result = num1 % num2;
 					break;
 				}
-				message = new String(bytes,0,readByteCnt);//
-				//----------- 전송받은 메세지 출력 완료 -----------//
-				
 				OutputStream os = socket.getOutputStream();//출력객체 생성
-				message = "Hello Client";
+				message = "결과"+result;
 				bytes = message.getBytes();//String.getBytes()->문자열을 byte배열로 변환
 				os.write(bytes);//전송
 				os.flush();//메세지 밀어내기
