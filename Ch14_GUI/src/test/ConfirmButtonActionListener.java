@@ -31,11 +31,15 @@ public class ConfirmButtonActionListener implements ActionListener{
 		FileOutputStream fos=null;
 		ObjectOutputStream oos=null;
 		try {
+			oos = new ObjectOutputStream(new FileOutputStream(f));
 			String name = text1.getText();
 			String address = text2.getText();
 			String tel = text3.getText();
 			Member member = new Member(name,address,tel);
-			oos.writeObject(member);//객체 저장
+			list.add(member);
+			for(int i=0; i<list.size();i++) {
+				oos.writeObject(list.get(i));//객체 저장
+			}
 			System.out.println("객체 저장 성공");
 			oos.flush();//밀어내기
 			oos.close();   fos.close();

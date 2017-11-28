@@ -43,7 +43,7 @@ public class WindowLayoutExample4 {
 		contentPane.add(button,BorderLayout.SOUTH);//아래
 		//리스너 생성
 		 ActionListener listener
-		= new InputButtonActionListener(text1, text2, text3);
+		= new ConfirmButtonActionListener(text1, text2, text3);
 		 //리스너 부착
 		 button.addActionListener(listener);
 		//default operation부착
