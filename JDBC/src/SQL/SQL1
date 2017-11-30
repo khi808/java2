@@ -1,0 +1,28 @@
+create table member(
+	no int primary key auto_increment,
+	name varchar(30),
+	flag varchar(1)
+);
+
+select * from member;
+alter table member modify flag varchar(1) default 'y';
+
+insert into member(name) values('홍길동');
+insert into member(name) values('일지매');
+insert into member(name) values('임꺽정');
+insert into member(name) values('이순신');
+insert into member(name) values('유관순');
+
+/*논리적 삭제 물리적 삭제*/
+update member set flag='n' where no=1;
+
+select * from member where flag <> 'n';
+
+create table address(
+	no int primary key auto_increment,
+	name varchar(20),
+	address varchar(20),
+	tel varchar(15)
+);
+
+desc address;
