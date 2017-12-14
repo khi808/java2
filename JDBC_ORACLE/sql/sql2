@@ -1,0 +1,96 @@
+select * from test2;
+select * from test3;
+
+create or replace procedure adjust01(
+	n number, rate float
+)
+is
+newpay float;
+BEGIN
+	select sal into newpay
+	from emp
+	where empno = n;
+	newpay := newpay + newpay*rate;
+	update emp
+	   set sal = newpay
+	 where empno = n;
+END; 
+
+select * from user_source;
+
+select * from user_objects where object_type='PROCEDURE';
+
+select * from emp;
+
+//* 커서타입- (여러건의 데이터를 담을수 있는 객체) 의 변수를 생성 */
+create or replace package types
+as
+ type cursorType is ref cursor;
+end;
+
+create or replace function cur_listEmp
+return types.cursorType
+as
+	1_cursor types.cursortype;
+begin
+	open 1_cursor for select ename, empno from emp order by ename;
+	return 1_cursor;
+end;
+
+select * from user_objects where object_type = 'FUNCTION';
+select ename, empno from emp order by ename;
+
+/*** 매개변수 세개짜리 프로시져 ***/
+create or replace procedure my_empProc
+(v_empno in out emp.empno%type,
+ v_ename out emp.ename%type,
+ v_sal   out emp.sal%type)
+as
+BEGIN
+	select empno, ename, sal
+	into v_empno, v_ename, v_sal
+	from emp
+	where empno = v_empno;
+END;
+
+select * from user_objects where object_type = 'PROCEDURE';
+
+
+/** 프로시저 **/
+create or replace procedure dept_proc01
+(cur_dept out SYS_REFCURSOR)
+as
+BEGIN
+	open cur_dept for
+	select a.deptno, dname, empno, ename
+	 from emp a,
+	 	  dept b
+	 where a.deptno = b.deptno;
+END ;
+
+
+create or replace procedure emp_info_proc
+(v_deptno in dept.deptno%type,
+ cur_emp out SYS_REFCURSOR
+)
+as
+BEGIN
+	open cur_emp for
+	select empno, ename, job, sal, grade
+	from emp, salgrade
+	where deptno = v_deptno
+	and sal between losal and hisal;
+END ;
+
+select * from salgrade;
+
+select empno, ename, job, sal, grade
+	from emp, salgrade
+	where deptno = 10
+	and sal between losal and hisal;
+	
+select empno, ename, job, sal, grade
+	from emp, salgrade
+	where deptno = 10;
+	
+select * from user_objects where object_type = 'PROCEDURE';
